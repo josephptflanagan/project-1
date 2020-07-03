@@ -4,35 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shamrock</title>
+    <!--PURE STYLE SHEET-->
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <!--CUSTOM STYLE SHEET-->
     <link rel="stylesheet" href="./assets/css/style.css"/>
 </head>
 <body>
-    <header> 
-        <h1>Bored at home?</h1>
-        <div class="pure-menu pure-menu-horizontal">
-            <a href="#" class="pure-menu-heading pure-menu-link">Shamrock</a>
-            <ul class="pure-menu-list">
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">Cocktails</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">Current News</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">Wikepedia Page</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">Chuck Norris Jokes</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">Random Video</a>
-                </li>
-            </ul>
+    <header>
+        <div class="pure-g">
+            <div class="pure-u-1-1 bored"></div>
+                <h1>Bored at Home?</h1>
+                <img src="./assets/images/board-at-home.png" class="title-image"></img>
+            </div>
         </div>
     </header>
 
+    <main>
+        <div class="pure-g" id="button-div"></div>
+        <div class="display-cocktail"></div>
 
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <!--JQUERY SCRIPT-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--CUSTOM SCRIPT-->
     <script src="./assets/js/app.js"></script>
 </body>
 </html>

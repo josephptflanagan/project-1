@@ -3,7 +3,9 @@ var displayCocktailEl = document.querySelector(".display-cocktail");
 
 var getData = async(searchTerm)=>{
 
-    searchTerm = "";
+    console.log("searchTerm: " + searchTerm);
+
+    if(searchTerm == null){searchTerm = "";} //for testing purposes only, REMOVE
     var urlArray = [];
     var dataArray = [];
 
@@ -286,63 +288,60 @@ function loadData() {
 
 function startUp() {
 
-
-
-    displayButtons("search");
+    displayButtons("startUp");
 
 };
 
-//when the search instead is clicked
-$("#to-search-button").on("click", function() {
-
-    displayButtons("search");
-
-});
-
-//when the random instead is clicked
-$("#to-random-button").on("click", function() {
-
-    console.log("to-random-button clicked")
-
-    displayButtons("random");
-
-});
-
-//when the random is clicked
-$("#randomize").on("click", function() {
-
-    console.log("random-button clicked")
-
-    //get and store the searchTerm from the search bar
-    var searchTerm = "";
-
-    if (searchTerm != "") {
-        //sends viable searchTerm to the getData function
-        getData(searchTerm);
-    }
-    else {
-        return;
-    }
-
-});
-
 //when the search bar is clicked
-$("#search-button").on("click", function() {
+$("#button-div").on("click", function() {
 
-    //get and store the searchTerm from the search bar
-    var searchTerm = $(this).siblings("#search-bar").val().trim();
+    //get continue-button input
+    if(event.target.matches("#continue-button")){
+        var startContent = Math.floor(Math.random() * 10)
+        if(startContent < 5){
+            displayButtons("random");
+        }
+        else{
+        displayButtons("search");
+        }
+    }
 
-    if (searchTerm != "") {
-        //sends viable searchTerm to the getData function
+    //get to-search-button input
+    if(event.target.matches("#to-search-button")){
+        displayButtons("search");
+    }
+    
+    //get to-random-button input
+    if(event.target.matches("#to-random-button")){
+        displayButtons("random");
+    }
+
+    //get randomize button input
+    if(event.target.matches("#randomize")){
+        var searchTerm = "";
         getData(searchTerm);
     }
-    else {
-        return;
+
+    //get and store the searchTerm from the search bar
+    if(event.target.matches("#search-button")){
+        
+        event.preventDefault();
+
+        var searchTerm = $("#search-bar").val().trim();
+        
+        if (searchTerm != "") {
+            //sends viable searchTerm to the getData function
+            getData(searchTerm);
+  
+        }
+        /*else {
+            return;
+        }*/
     }
+    
 
 });
 
 //drinkButton.addEventListener("click", getRandomCocktail);
 
 startUp();
-getData();

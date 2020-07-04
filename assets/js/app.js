@@ -1,5 +1,9 @@
 var drinkButton = document.getElementById("drink-button");
-var displayCocktailEl = document.querySelector(".display-cocktail");
+var displayCurrentEl = document.querySelector("#section-0");
+var displayChuckEl = document.querySelector("#section-1");
+var displayCocktailEl = document.querySelector("#section-2");
+var displayWikipediaEl = document.querySelector("#section-1");
+
 
 var getData = async(searchTerm)=>{
 
@@ -10,10 +14,10 @@ var getData = async(searchTerm)=>{
     var dataArray = [];
 
     if(searchTerm == ""){
-        //COCKTAIL
-        var cocktailApiKey = 1;
-        var cocktailUrl = "https://www.thecocktaildb.com/api/json/v1/" + cocktailApiKey + "/random.php";
-        urlArray.push(cocktailUrl);
+        
+        //CURRENT
+        //var currentUrl = "";
+        //urlArray.push(currentUrl);
 
         //CHUCK NORRIS
         //var chuckNorrisUrl = "";
@@ -23,9 +27,10 @@ var getData = async(searchTerm)=>{
         //var giphyUrl = "";
         //urlArray.push(giphyUrl);
 
-        //CURRENT
-        //var currentUrl = "";
-        //urlArray.push(currentUrl);
+        //COCKTAIL
+        var cocktailApiKey = 1;
+        var cocktailUrl = "https://www.thecocktaildb.com/api/json/v1/" + cocktailApiKey + "/random.php";
+        urlArray.push(cocktailUrl);
         
     }
     else{
@@ -60,20 +65,44 @@ function compileData(dataArray) {
 
 function displayData(dataArray) {
 
+    $("#section-0").empty();
+    $("#section-1").empty();
+    $("#section-2").empty();
+
     //RANDOM DATA START
     if(dataArray.length == 1){//ALERT ALERT ALERT ALERT ALERT <--------------------THIS "1" IS ONLY FOR TESTING PURPOSES, SHOULD BE 4 FOR RANDOM WHEN DATA IS AVAILABLE
         
         //update buttons
         displayButtons("random")
 
-        //COCKTAIL DISPLAY START
+        //CURRENT DISPLAY START dataArray[0]
+        displayCurrentEl.innerHTML = `
+        <div class="pure-g">
+            <div class="pure-u-3-5" id="news">
+                NEWS!!!!!  Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quam voluptates sit fugit, similique, dolores quae sint corrupti, dolore est doloribus minima officia voluptatibus! Doloribus adipisci expedita placeat repellat tempora. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tenetur cupiditate adipisci nostrum beatae. Rem nesciunt unde quasi dolore cumque, labore est animi, recusandae beatae doloremque fugit eaque, vero iure.
+            </div>
+        </div>`;
+        //CURRENT DISPLAY END
+
+        //CHUCK NORRIS DISPLAY START dataArray[1] (CONTAINS GIPHY DISPLAY dataArray[2])
+        displayChuckEl.innerHTML = `
+        <div class="pure-g">
+            <div class="pure-u-1-2" id="chuck">
+                <img src="https://via.placeholder.com/500x200/500?text=Chuck+Norris">
+            </div>
+        </div>`;
+
+        //CHUCK NORRIS DISPLAY END
+
+        
+        //COCKTAIL DISPLAY START dataArray[0] for now, dataArray[3] once all are present
         displayCocktailEl.innerHTML = `
         <div>
             <h2 id=“cocktailName”>${dataArray[0].drinks[0].strDrink}</h2>
             <img src=${dataArray[0].drinks[0].strDrinkThumb} alt=${dataArray[0].strDrink} id=“cocktailImage”/>
         </div>
         <div>
-                <p id=“cocktailInstructions”>${dataArray[0].drinks[0].strInstructions}</p>
+            <p id=“cocktailInstructions”>${dataArray[0].drinks[0].strInstructions}</p>
         </div>
         <h3>Ingredients</h3>
         <span id=“measure1">${dataArray[0].drinks[0].strMeasure1}</span>
@@ -164,11 +193,6 @@ function displayData(dataArray) {
         }
         //COCKTAIL DISPLAY END
         
-        //CHUCK NORRIS DISPLAY START dataArray[1] (CONTAINS GIPHY DISPLAY dataArray[2])
-        //CHUCK NORRIS DISPLAY END
-
-        //CURRENT DISPLAY START dataArray[3]
-        //CURRENT DISPLAY END
         //RANDOM DATA END
     }
     else if(dataArray.length == 2){//SEARCH DATA START
@@ -177,10 +201,40 @@ function displayData(dataArray) {
         displayButtons("search")
 
         //WIKIPEDIA DISPLAY START dataArray[0]
+        displayWikipediaEl.innerHTML = `
+        <div class="pure-g">
+            <div class="pure-u-3-5" id="wikipedia-text">
+                WIKIPEDIA TEXT!!!!!   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi debitis id alias, adipisci aut laboriosam maxime dolorem vero culpa repudiandae quod, magnam, repellendus tempora ratione quo exercitationem harum enim quam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima officia at reiciendis soluta autem laudantium vitae quidem corporis commodi fugiat pariatur perferendis ad quae, asperiores facere sapiente explicabo enim maxime?
+            </div>
+        </div>
+        `;
         //WIKIPEDIA DISPLAY END
 
         //VIMEO DISPLAY START dataArray[1]
+        var vimeoVideoURL = "https://player.vimeo.com/video/" + dataArray[1].video_id;
+
+        var vimeoPlayer = $("<iframe>")
+            .attr("src", vimeoVideoURL)
+            .attr("width", dataArray[1].width)
+            .attr("height", dataArray[1].height)
+            .attr("frameborder", "0")
+            .attr("title", dataArray[1].title)
+            .attr("webkitallowfullscreen")
+            .attr("mozallowfullscreen")
+            .attr("allowfullscreen");
+
+        var vimeoDiv = $("<div>")
+            .addClass("vimeo-card")
+            .attr("id", "vimeo")
+            .append(vimeoPlayer);
+
+        var vimeoSection = $("<div>")
+            .addClass("pure-g")
+            .append(vimeoDiv);
+
+        $("#section-1").append(vimeoSection);
         //VIMEO DISPLAY END
+
         //SEARCH DATA END
     }
 

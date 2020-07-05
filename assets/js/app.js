@@ -4,6 +4,8 @@ var displayChuckEl = document.querySelector("#section-1");
 var displayCocktailEl = document.querySelector("#section-2");
 var displayWikipediaEl = document.querySelector("#section-1");
 
+var objArray = [];
+
 
 var getData = async(searchTerm)=>{
 
@@ -38,12 +40,14 @@ var getData = async(searchTerm)=>{
         //WIKIPEDIA
         var wikipediaUrl = "";
         urlArray.push(wikipediaUrl);  
-
+        */
         //VIMEO 
         var videoId = "172825105";
-        var vimeoUrl = "https://api.vimeo.com/videos/" + videoId;
+        var vimeoAccessToken = "https://api.vimeo.com/oauth/authorize?response_type=code&clinet_id=fbc534edd13479f3a002a38342265d98e170a563&redirect_uri=https://josephptflanagan.github.io/project-1/&state{}&scope={}";
+        var vimeoUrl = "https://api.vimeo.com/oauth/videos?fields=uri,width,height,title";
         urlArray.push(vimeoUrl);
-        */
+        saveData(searchTerm);
+        
     }
        
     for(var i = 0; i < urlArray.length; i++){
@@ -53,22 +57,17 @@ var getData = async(searchTerm)=>{
         dataArray.push(json);
     }
     
-    compileData(dataArray);
+    displayData(dataArray);
         
 };
-
-function compileData(dataArray) {
-
-    displayData(dataArray);
-
-};
-
+//function for displaying 
 function displayData(dataArray) {
 
     $("#section-0").empty();
     $("#section-1").empty();
     $("#section-2").empty();
 
+    
     //RANDOM DATA START
     if(dataArray.length == 1){//ALERT ALERT ALERT ALERT ALERT <--------------------THIS "1" IS ONLY FOR TESTING PURPOSES, SHOULD BE 4 FOR RANDOM WHEN DATA IS AVAILABLE
         
@@ -195,12 +194,12 @@ function displayData(dataArray) {
         
         //RANDOM DATA END
     }
-    else if(dataArray.length == 2){//SEARCH DATA START
+    else if(dataArray.length == 0){//SEARCH DATA START temporarily set to 1 to test vimeo, reset to 2, restore else if
 
         //update buttons
         displayButtons("search")
 
-        //WIKIPEDIA DISPLAY START dataArray[0]
+        //WIKIPEDIA DISPLAY START dataArray[0] 
         displayWikipediaEl.innerHTML = `
         <div class="pure-g">
             <div class="pure-u-3-5" id="wikipedia-text">
@@ -210,15 +209,15 @@ function displayData(dataArray) {
         `;
         //WIKIPEDIA DISPLAY END
 
-        //VIMEO DISPLAY START dataArray[1]
-        var vimeoVideoURL = "https://player.vimeo.com/video/" + dataArray[1].video_id;
+        //VIMEO DISPLAY START dataArray[0] for now, dataArray[1] once all are present
+        var vimeoVideoURL = "https://player.vimeo.com/" + dataArray[0].uri;
 
         var vimeoPlayer = $("<iframe>")
             .attr("src", vimeoVideoURL)
-            .attr("width", dataArray[1].width)
-            .attr("height", dataArray[1].height)
+            .attr("width", dataArray[0].width)
+            .attr("height", dataArray[0].height)
             .attr("frameborder", "0")
-            .attr("title", dataArray[1].title)
+            .attr("title", dataArray[0].title)
             .attr("webkitallowfullscreen")
             .attr("mozallowfullscreen")
             .attr("allowfullscreen");
@@ -239,6 +238,26 @@ function displayData(dataArray) {
     }
 
 
+};
+
+function saveData(searchTerm) {
+
+    localStorage.clear();
+    localStorage.setItem("search-term", searchTerm);
+
+};
+
+function loadData() {
+    var search = localStorage.getItem("search-term");
+
+    localStorage.clear();
+
+    if(!search){
+        return "Search";
+    }
+    else{
+        return search;
+    }
 };
 
 //Sets up the buttons at the top of the page depending on the requirements
@@ -304,7 +323,7 @@ function displayButtons(source) {
         var searchBar = $("<input>")
             .addClass("search")
             .attr("type", "text")
-            .attr("placeholder", "Search")
+            .attr("placeholder", loadData())
             .attr("aria-label", "Search")
             .attr("id", "search-bar");
 
@@ -327,17 +346,6 @@ function displayButtons(source) {
 
         $("#button-div").append(enclosingDiv);
     }
-
-
-
-};
-
-function saveData() {
-
-};
-
-function loadData() {
-
 };
 
 function startUp() {
@@ -388,9 +396,9 @@ $("#button-div").on("click", function() {
             getData(searchTerm);
   
         }
-        /*else {
+        else {
             return;
-        }*/
+        }
     }
     
 

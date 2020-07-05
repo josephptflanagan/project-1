@@ -2,12 +2,19 @@ body {
     padding: 10px;
 }
 
+main{
+    min-height: 800px;
+}
 
 .title-image{
     display: inline-block;
     margin: 5px 5px;
     max-height: 60px;
     max-width: 130px;
+}
+
+.button-div{
+    padding-bottom: 10px;
 }
 
 .btn{
@@ -23,12 +30,14 @@ body {
     display:inline-block;
     padding: 20px;
     font-size: 20px;
+    border-radius: 0px 5px 5px 0px;
 }
 
 .search{
     display:inline-block;
-    padding: 20px !important;
+    padding: 19px !important;
     font-size: 20px;
+    border-radius: 5px 0px 0px 5px;
 }
 
 .sub{
@@ -37,4 +46,8 @@ body {
 
 .high{
     width: 100%;
+}
+
+.pure-form fieldset{
+    padding-top: 0px !important;
 }

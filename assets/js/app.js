@@ -29,6 +29,7 @@ var currentNews = function ()
 var displayNews = function (data) 
 {
     domEl.innerHTML = "";
+
     // length of article array
     var numArticles = data.news.length
     // console.log(numArticles);
@@ -63,6 +64,9 @@ var displayNews = function (data)
         var divEl = document.createElement("div");
         divEl.classList= "card"
 
+        var contentEl = document.createElement("div");
+        contentEl.classList ="card_content";
+
         if (articleImg === "None") 
         {
             // if no image available for the article append bored at home img
@@ -90,8 +94,6 @@ var displayNews = function (data)
             // append to the div element with class card
             divEl.appendChild(imgLinkEl);
         }
-
-        
 
         // create link element to link title
         var titleEl = document.createElement("a");

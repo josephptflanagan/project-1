@@ -8,7 +8,7 @@ var wikiContainerEl = document.querySelector("#section-0");
 
 var getData = async (searchTerm) => {
 
-    console.log("searchTerm: " + searchTerm);
+    // console.log("searchTerm: " + searchTerm);
 
     if (searchTerm == null) { searchTerm = ""; } //for testing purposes only, REMOVE
     var urlArray = [];
@@ -130,7 +130,7 @@ function displayData(dataArray) {
             // append link to image
             imgLinkEl.appendChild(imgEl);
             
-            // append to the div element with class card
+            // append to the div element with class = card
             divEl.appendChild(imgLinkEl);
         }
 
@@ -140,7 +140,7 @@ function displayData(dataArray) {
         titleEl.setAttribute("href", articleUrl);
         titleEl.setAttribute("target", "_blank")
         titleEl.textContent = articleTitle;
-        divEl.appendChild(titleEl);
+        // divEl.appendChild(titleEl);
 
         // create p element for article description
         var descripEl = document.createElement("p");
@@ -156,11 +156,10 @@ function displayData(dataArray) {
 
         // append div element to list element
         listEl.appendChild(divEl);
- 
+
         // append to the dom
         displayCurrentEl.appendChild(containerEl);
     }
-
 
         //CURRENT DISPLAY END
 

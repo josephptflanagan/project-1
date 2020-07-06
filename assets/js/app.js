@@ -108,6 +108,9 @@ function displayData(dataArray) {
         var divEl = document.createElement("div");
         divEl.classList= "card"
 
+        var contentEl = document.createElement('div');
+        contentEl.classList ='card_content';
+        
         if (articleImg === "None") 
         {
           
@@ -145,8 +148,6 @@ function displayData(dataArray) {
         descripEl.textContent = articleDescrip;
 
         // append title and description to content element
-        var contentEl = document.createElement('div');
-        contentEl.classList ='card_content';
         contentEl.appendChild(titleEl);
         contentEl.appendChild(descripEl);
 

@@ -115,3 +115,21 @@ main {
     padding-top: 0px !important;
 
 }
+
+#cocktailImage {
+  float: right;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+#section-2 {
+  justify-content: center;
+}
+
+.measurement {
+  color: red;
+}
+
+.ingredient {
+  color: blue;
+}

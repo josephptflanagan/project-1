@@ -23,10 +23,6 @@ var getData = async (searchTerm) => {
         var chuckNorrisUrl = "https://api.chucknorris.io/jokes/random";
         urlArray.push(chuckNorrisUrl);
 
-        //GIPHY
-        //var giphyUrl = "";
-        //urlArray.push(giphyUrl);
-
         //COCKTAIL
         var cocktailApiKey = 1;
         var cocktailUrl = "https://www.thecocktaildb.com/api/json/v1/" + cocktailApiKey + "/random.php";
@@ -38,6 +34,10 @@ var getData = async (searchTerm) => {
         //WIKIPEDIA
         var wikiApiUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/" + searchTerm;
         urlArray.push(wikiApiUrl);
+
+        //GIPHY
+        var giphyUrl = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=bYiMXI4FC68dbdXanEiXzEgHn010vL3G&limit=1";
+        urlArray.push(giphyUrl);
 
         /* //VIMEO 
         var videoId = "172825105";
@@ -271,7 +271,7 @@ function displayData(dataArray) {
         //RANDOM DATA END
     }
        
-    if (dataArray.length == 1) {//SEARCH DATA START temporarily set to 1 to test wiki
+    if (dataArray.length == 2) {//SEARCH DATA START temporarily set to 1 to test wiki
 
         //WIKIPEDIA DISPLAY START dataArray[0] 
         if (dataArray[0].type === "disambiguation") {
@@ -320,6 +320,18 @@ function displayData(dataArray) {
             wikiContainerEl.appendChild(wikiTableDiv);
         }
         //WIKIPEDIA DISPLAY END
+
+        //GIPHY DISPLAY START
+        var gifImg = $("<img>")
+            .attr("src", dataArray[1].data[0].images.fixed_height.url);
+
+        // Append 'gifImg' to the <div>
+        var gifContainer = $("<div>")
+            .append(gifImg);
+
+        $("#section-1").append(gifContainer);
+
+        //GIPHY DISPLAY END
 
         /*
         //VIMEO DISPLAY START dataArray[0] for now, dataArray[1] once all are present

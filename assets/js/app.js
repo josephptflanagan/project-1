@@ -26,7 +26,8 @@ var currentNews = function ()
 
 }
 
-var displayNews = function (data) {
+var displayNews = function (data) 
+{
     domEl.innerHTML = "";
     // length of article array
     var numArticles = data.news.length
@@ -65,10 +66,11 @@ var displayNews = function (data) {
         if (articleImg === "None") 
         {
             // if no image available for the article append bored at home img
-            var boredImg = document.createElement("img");
-            boredImg.setAttribute("src", "./assets/image.png")
-            boredImg.classList = "card_img"
-            divEl.appendChild(boredImg);
+            // var boredImg = document.createElement("img");
+            // boredImg.setAttribute("src", "./assets/image.png")
+            // boredImg.classList = "card_img"
+            // divEl.appendChild(boredImg);
+            
         }
         else 
         {
@@ -89,8 +91,7 @@ var displayNews = function (data) {
             divEl.appendChild(imgLinkEl);
         }
 
-        var contentEl = document.createElement("div");
-        contentEl.classList ="card_content";
+        
 
         // create link element to link title
         var titleEl = document.createElement("a");

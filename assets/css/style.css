@@ -63,8 +63,9 @@ img {
  background-color: rgb(112, 131, 77);
  border-radius: 0.25rem;
  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
------
-main{
+}
+
+main {
     min-height: 800px;
 }
 

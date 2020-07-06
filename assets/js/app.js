@@ -65,104 +65,102 @@ function displayData(dataArray) {
     $("#section-1").empty();
     $("#section-2").empty();
 
+    //update buttons
+    displayButtons("content")
     
     //RANDOM DATA START
-    if(dataArray.length == 3){
-        
-        //update buttons
-        displayButtons("random")
+    if(dataArray.length == 3){       
 
         //CURRENT DISPLAY START dataArray[0]
 
-    var numArticles = dataArray[0].news.length
-    // console.log(numArticles);
+        var numArticles = dataArray[0].news.length
+        // console.log(numArticles);
 
-    for (i = 0; i < 3; i++) 
-    {
-        // function to choose random number from array
-        var randomNumber = (Math.floor(Math.random() * numArticles))
-
-        // pull random article name
-        var articleTitle = dataArray[0].news[randomNumber].title;
-
-        // pull description of article
-        var articleDescrip = dataArray[0].news[randomNumber].description;
-
-        // pull article's image
-        var articleImg = dataArray[0].news[randomNumber].image;
-
-        // pull article's link for the website
-        var articleUrl = dataArray[0].news[randomNumber].url;
-
-        // create unordered list element
-        var containerEl = document.createElement("ul");
-        containerEl.classList = "cards"
-
-        // create list element for unordered list
-        var listEl = document.createElement("li");
-        listEl.classList= "cards_item";
-        containerEl.appendChild(listEl);
-
-        // create div element for every card
-        var divEl = document.createElement("div");
-        divEl.classList= "card"
-
-        if (articleImg === "None") 
+        for (i = 0; i < 3; i++) 
         {
-          
-        }
-        else 
-        {
-            // create link for image to article
-            var imgLinkEl = document.createElement("a");
-            imgLinkEl.classList = "card_image"
-            imgLinkEl.setAttribute("href", articleUrl);
-            imgLinkEl.setAttribute("target", "_blank");
+            // function to choose random number from array
+            var randomNumber = (Math.floor(Math.random() * numArticles))
 
-            // pull image url and create image element
-            var imgEl = document.createElement("img");
-            imgEl.setAttribute("src", articleImg);
+            // pull random article name
+            var articleTitle = dataArray[0].news[randomNumber].title;
 
-            // append link to image
-            imgLinkEl.appendChild(imgEl);
+            // pull description of article
+            var articleDescrip = dataArray[0].news[randomNumber].description;
+
+            // pull article's image
+            var articleImg = dataArray[0].news[randomNumber].image;
+
+            // pull article's link for the website
+            var articleUrl = dataArray[0].news[randomNumber].url;
+
+            // create unordered list element
+            var containerEl = document.createElement("ul");
+            containerEl.classList = "cards"
+
+            // create list element for unordered list
+            var listEl = document.createElement("li");
+            listEl.classList= "cards_item";
+            containerEl.appendChild(listEl);
+
+            // create div element for every card
+            var divEl = document.createElement("div");
+            divEl.classList= "card"
+
+            if (articleImg === "None") 
+            {
             
-            // append to the div element with class card
-            divEl.appendChild(imgLinkEl);
+            }
+            else 
+            {
+                // create link for image to article
+                var imgLinkEl = document.createElement("a");
+                imgLinkEl.classList = "card_image"
+                imgLinkEl.setAttribute("href", articleUrl);
+                imgLinkEl.setAttribute("target", "_blank");
+
+                // pull image url and create image element
+                var imgEl = document.createElement("img");
+                imgEl.setAttribute("src", articleImg);
+
+                // append link to image
+                imgLinkEl.appendChild(imgEl);
+                
+                // append to the div element with class card
+                divEl.appendChild(imgLinkEl);
+            }
+        
+            // create link element to link title
+            var titleEl = document.createElement("a");
+            titleEl.classList = "card_title";
+            titleEl.setAttribute("href", articleUrl);
+            titleEl.setAttribute("target", "_blank")
+            titleEl.textContent = articleTitle;
+            divEl.appendChild(titleEl);
+
+            // create p element for article description
+            var descripEl = document.createElement("p");
+            descripEl.classList = "card_text";
+            descripEl.textContent = articleDescrip;
+
+            // append title and description to content element
+            var contentEl = document.createElement('div');
+            contentEl.classList ='card_content';
+            contentEl.appendChild(titleEl);
+            contentEl.appendChild(descripEl);
+
+            // append content element to div el (each article card)
+            divEl.appendChild(contentEl);
+
+            // append div element to list element
+            listEl.appendChild(divEl);
+    
+            // append to the dom
+            displayCurrentEl.appendChild(containerEl);
         }
-
-        // create link element to link title
-        var titleEl = document.createElement("a");
-        titleEl.classList = "card_title";
-        titleEl.setAttribute("href", articleUrl);
-        titleEl.setAttribute("target", "_blank")
-        titleEl.textContent = articleTitle;
-        divEl.appendChild(titleEl);
-
-        // create p element for article description
-        var descripEl = document.createElement("p");
-        descripEl.classList = "card_text";
-        descripEl.textContent = articleDescrip;
-
-        // append title and description to content element
-        var contentEl = document.createElement('div');
-        contentEl.classList ='card_content';
-        contentEl.appendChild(titleEl);
-        contentEl.appendChild(descripEl);
-
-        // append content element to div el (each article card)
-        divEl.appendChild(contentEl);
-
-        // append div element to list element
-        listEl.appendChild(divEl);
- 
-        // append to the dom
-        displayCurrentEl.appendChild(containerEl);
-    }
-
-
+    
         //CURRENT DISPLAY END
 
-        //CHUCK NORRIS DISPLAY START dataArray[1] (CONTAINS GIPHY DISPLAY dataArray[2])
+        //CHUCK NORRIS DISPLAY START dataArray[1]
         displayChuckEl.innerHTML = `
         <div class="pure-g">
             <div class="pure-u-1-2" id="chuck">
@@ -171,9 +169,8 @@ function displayData(dataArray) {
         </div>`;
         
         //CHUCK NORRIS DISPLAY END
-
         
-        //COCKTAIL DISPLAY START dataArray[0] for now, dataArray[3] once all are present
+        //COCKTAIL DISPLAY START dataArray[2]
         displayCocktailEl.innerHTML = `
         <div>
             <h2 id=“cocktailName”>${dataArray[2].drinks[0].strDrink}</h2>
@@ -274,16 +271,13 @@ function displayData(dataArray) {
         //RANDOM DATA END
     }
        
-    if (dataArray.length == 1) {//SEARCH DATA START temporarily set to 1 to test vimeo, reset to 2, restore else if
-
-        //update buttons
-        displayButtons("search")
+    if (dataArray.length == 1) {//SEARCH DATA START temporarily set to 1 to test wiki
 
         //WIKIPEDIA DISPLAY START dataArray[0] 
         if (dataArray[0].type === "disambiguation") {
             var disabmExtract = dataArray[0].extract;
             console.log(disabmExtract);
-
+            
             var disambTitle = dataArray[0].title;
             
             var wikiTableDiv = document.createElement("div");
@@ -294,7 +288,6 @@ function displayData(dataArray) {
             disambTitleEl.textContent = disambTitle;
             disabmExtractEl.textContent = disabmExtract;
             
-
             wikiTableDiv.appendChild(disambTitleEl);
             wikiTableDiv.appendChild(disabmExtractEl);
 
@@ -309,7 +302,6 @@ function displayData(dataArray) {
             var wikiLink = dataArray[0].content_urls.desktop.page;
 
             var wikiImg = dataArray[0].thumbnail.source;
-
 
             var wikiTableDiv = document.createElement("div");
             wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal");
@@ -327,8 +319,6 @@ function displayData(dataArray) {
 
             wikiContainerEl.appendChild(wikiTableDiv);
         }
-
-
         //WIKIPEDIA DISPLAY END
 
         /*
@@ -367,7 +357,7 @@ function saveData(searchTerm) {
 
     localStorage.clear();
     localStorage.setItem("search-term", searchTerm);
-    console.log(searchTerm);
+
 };
 
 function loadData() {
@@ -410,7 +400,7 @@ function displayButtons(source) {
 
         $("#button-div").append(continueButtonDiv, trollButtonDiv);
     }
-    else if (source == "random") {
+    else if (source == "content") {
 
         var randomButton = $("<button>")
             .addClass("pure-button btn")
@@ -420,28 +410,6 @@ function displayButtons(source) {
         var randomButtonDiv = $("<div>")
             .addClass("pure-u-1-2")
             .append(randomButton);
-
-        var toSearchButton = $("<button>")
-            .addClass("pure-button btn")
-            .attr("id", "to-search-button")
-            .text("Search Instead");
-
-        var toSearchButtonDiv = $("<div>")
-            .addClass("pure-u-1-2")
-            .append(toSearchButton);
-
-        $("#button-div").append(randomButtonDiv, toSearchButtonDiv);
-    }
-    else if (source == "search") {
-
-        var toRandomButton = $("<button>")
-            .addClass("pure-button btn")
-            .attr("id", "to-random-button")
-            .text("Random Instead");
-
-        var toRandomButtonDiv = $("<div>")
-            .addClass("sub")
-            .append(toRandomButton);
 
         var searchBar = $("<input>")
             .addClass("search")
@@ -465,7 +433,7 @@ function displayButtons(source) {
 
         var enclosingDiv = $("<div>")
             .addClass("high pure-g")
-            .append(toRandomButtonDiv, searchBarForm)
+            .append(randomButtonDiv, searchBarForm)
 
         $("#button-div").append(enclosingDiv);
     }
@@ -482,23 +450,9 @@ $("#button-div").on("click", function () {
 
     //get continue-button input
     if (event.target.matches("#continue-button")) {
-        var startContent = Math.floor(Math.random() * 10)
-        if (startContent < 5) {
-            displayButtons("random");
-        }
-        else {
-            displayButtons("search");
-        }
-    }
 
-    //get to-search-button input
-    if (event.target.matches("#to-search-button")) {
-        displayButtons("search");
-    }
+            displayButtons("content");
 
-    //get to-random-button input
-    if (event.target.matches("#to-random-button")) {
-        displayButtons("random");
     }
 
     //get randomize button input

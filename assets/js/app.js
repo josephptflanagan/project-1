@@ -173,6 +173,7 @@ function displayData(dataArray) {
         //COCKTAIL DISPLAY START dataArray[2]
         displayCocktailEl.innerHTML = `
         <div class=card>
+            <h1 class=havea>Have a drink!</h1>
             <h2 class=card-title id=cocktailName>${dataArray[2].drinks[0].strDrink}</h2>
             <img src=${dataArray[2].drinks[0].strDrinkThumb} alt=${dataArray[2].strDrink} id=cocktailImage>
         </div>

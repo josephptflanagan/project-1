@@ -1,74 +1,21 @@
 
-
-
-
-// https://en.wikipedia.org/w/api.php
-// https://en.wikipedia.org/api/rest_v1/page/random/summary
-
-
-var wikiApiUrl = "https://en.wikipedia.org/api/rest_v1/page/random/summary"; 
-searchTerm = "";
-
-// if searchTerm is NOT empty them add search term to wikiApiUrl
-if (searchTerm != "") {
-    wikiApiUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/" + searchTerm;
-};
-
-fetch(wikiApiUrl)
-    .then(function(response){return response.json();})
-    .then(function(response) {
-        displayWiki(response);
-    })
-    .catch(function(error){console.log(error);
-});
-
-var displayWiki = function(data) {
-    console.log(data);
-    var wikiTitle = data.title;
-    console.log(wikiTitle);
-    var wikiExtract = data.extract;
-    console.log(wikiExtract);
-    var wikiLink = data.content_urls.desktop.page;
-    console.log(wikiLink);
-    var wikiImg = data.thumbnail.source; 
-    console.log(wikiImg);
-
-    var wikiTableDiv = document.createElement("div");
-    wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal");
-    var wikiTitleEl = document.createElement("h3");
-    var wikiExtractEl = document.createElement("p");
-    var wikiImgEl = document.createElement("img");
-
-    wikiTitleEl.textContent = wikiTitle;
-    wikiExtractEl.textContent = wikiExtract;
-    wikiImgEl.setAttribute("src", wikiImg);
-
-    wikiTableDiv.appendChild(wikiTitleEl);
-    wikiTableDiv.appendChild(wikiExtractEl);
-    wikiTableDiv.appendChild(wikiImgEl);
-
-    wikiContainerEl.appendChild(wikiTableDiv);
-
-}; 
 var drinkButton = document.getElementById("drink-button");
 var displayCurrentEl = document.querySelector("#section-0");
 var displayChuckEl = document.querySelector("#section-1");
 var displayCocktailEl = document.querySelector("#section-2");
-var wikiContainerEl = document.querySelector("#wiki-container");
-
-var objArray = [];
+var wikiContainerEl = document.querySelector("#section-0");
 
 
-var getData = async(searchTerm)=>{
+var getData = async (searchTerm) => {
 
     console.log("searchTerm: " + searchTerm);
 
-    if(searchTerm == null){searchTerm = "";} //for testing purposes only, REMOVE
+    if (searchTerm == null) { searchTerm = ""; } //for testing purposes only, REMOVE
     var urlArray = [];
     var dataArray = [];
 
-    if(searchTerm == ""){
-        
+    if (searchTerm == "") {
+
         //CURRENT
         //var currentUrl = "";
         //urlArray.push(currentUrl);
@@ -85,32 +32,32 @@ var getData = async(searchTerm)=>{
         var cocktailApiKey = 1;
         var cocktailUrl = "https://www.thecocktaildb.com/api/json/v1/" + cocktailApiKey + "/random.php";
         urlArray.push(cocktailUrl);
-        
+
     }
-    else{
-        /*
+    else {
+
         //WIKIPEDIA
-        var wikipediaUrl = "";
-        urlArray.push(wikipediaUrl);  
-        */
-        //VIMEO 
+        var wikiApiUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/" + searchTerm;
+        urlArray.push(wikiApiUrl);
+
+        /* //VIMEO 
         var videoId = "172825105";
         var vimeoAccessToken = "https://api.vimeo.com/oauth/authorize?response_type=code&clinet_id=fbc534edd13479f3a002a38342265d98e170a563&redirect_uri=https://josephptflanagan.github.io/project-1/&state{}&scope={}";
         var vimeoUrl = "https://api.vimeo.com/oauth/videos?fields=uri,width,height,title";
         urlArray.push(vimeoUrl);
+       */
         saveData(searchTerm);
-        
     }
-       
-    for(var i = 0; i < urlArray.length; i++){
+
+    for (var i = 0; i < urlArray.length; i++) {
 
         var data = await fetch(urlArray[i]);
         var json = await data.json();
         dataArray.push(json);
     }
-    
+
     displayData(dataArray);
-        
+
 };
 //function for displaying 
 function displayData(dataArray) {
@@ -119,7 +66,7 @@ function displayData(dataArray) {
     $("#section-1").empty();
     $("#section-2").empty();
 
-    
+    /*
     //RANDOM DATA START
     if(dataArray.length == 1){//ALERT ALERT ALERT ALERT ALERT <--------------------THIS "1" IS ONLY FOR TESTING PURPOSES, SHOULD BE 4 FOR RANDOM WHEN DATA IS AVAILABLE
         
@@ -246,21 +193,65 @@ function displayData(dataArray) {
         
         //RANDOM DATA END
     }
-    else if(dataArray.length == 0){//SEARCH DATA START temporarily set to 1 to test vimeo, reset to 2, restore else if
+       */
+    if (dataArray.length == 1) {//SEARCH DATA START temporarily set to 1 to test vimeo, reset to 2, restore else if
 
         //update buttons
         displayButtons("search")
 
         //WIKIPEDIA DISPLAY START dataArray[0] 
-        displayWikipediaEl.innerHTML = `
-        <div class="pure-g">
-            <div class="pure-u-3-5" id="wikipedia-text">
-                WIKIPEDIA TEXT!!!!!   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi debitis id alias, adipisci aut laboriosam maxime dolorem vero culpa repudiandae quod, magnam, repellendus tempora ratione quo exercitationem harum enim quam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima officia at reiciendis soluta autem laudantium vitae quidem corporis commodi fugiat pariatur perferendis ad quae, asperiores facere sapiente explicabo enim maxime?
-            </div>
-        </div>
-        `;
+        if (dataArray[0].type === "disambiguation") {
+            var disabmExtract = dataArray[0].extract;
+            console.log(disabmExtract);
+
+            var disambTitle = dataArray[0].title;
+            
+            var wikiTableDiv = document.createElement("div");
+            wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal");
+            var disambTitleEl = document.createElement("h3");
+            var disabmExtractEl = document.createElement("p");
+
+            disambTitleEl.textContent = disambTitle;
+            disabmExtractEl.textContent = disabmExtract;
+            
+
+            wikiTableDiv.appendChild(disambTitleEl);
+            wikiTableDiv.appendChild(disabmExtractEl);
+
+            wikiContainerEl.appendChild(wikiTableDiv);
+
+        }
+
+        else {
+            var wikiTitle = dataArray[0].title;
+            var wikiExtract = dataArray[0].extract;
+
+            var wikiLink = dataArray[0].content_urls.desktop.page;
+
+            var wikiImg = dataArray[0].thumbnail.source;
+
+
+            var wikiTableDiv = document.createElement("div");
+            wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal");
+            var wikiTitleEl = document.createElement("h3");
+            var wikiExtractEl = document.createElement("p");
+            var wikiImgEl = document.createElement("img");
+
+            wikiTitleEl.textContent = wikiTitle;
+            wikiExtractEl.textContent = wikiExtract;
+            wikiImgEl.setAttribute("src", wikiImg);
+
+            wikiTableDiv.appendChild(wikiTitleEl);
+            wikiTableDiv.appendChild(wikiExtractEl);
+            wikiTableDiv.appendChild(wikiImgEl);
+
+            wikiContainerEl.appendChild(wikiTableDiv);
+        }
+
+
         //WIKIPEDIA DISPLAY END
 
+        /*
         //VIMEO DISPLAY START dataArray[0] for now, dataArray[1] once all are present
         var vimeoVideoURL = "https://player.vimeo.com/" + dataArray[0].uri;
 
@@ -287,8 +278,8 @@ function displayData(dataArray) {
         //VIMEO DISPLAY END
 
         //SEARCH DATA END
+        */
     }
-
 
 };
 
@@ -296,18 +287,18 @@ function saveData(searchTerm) {
 
     localStorage.clear();
     localStorage.setItem("search-term", searchTerm);
-
+    console.log(searchTerm);
 };
 
 function loadData() {
     var search = localStorage.getItem("search-term");
 
-    localStorage.clear();
+  //  localStorage.clear();
 
-    if(!search){
+    if (!search) {
         return "Search";
     }
-    else{
+    else {
         return search;
     }
 };
@@ -407,52 +398,52 @@ function startUp() {
 };
 
 //when the search bar is clicked
-$("#button-div").on("click", function() {
+$("#button-div").on("click", function () {
 
     //get continue-button input
-    if(event.target.matches("#continue-button")){
+    if (event.target.matches("#continue-button")) {
         var startContent = Math.floor(Math.random() * 10)
-        if(startContent < 5){
+        if (startContent < 5) {
             displayButtons("random");
         }
-        else{
-        displayButtons("search");
+        else {
+            displayButtons("search");
         }
     }
 
     //get to-search-button input
-    if(event.target.matches("#to-search-button")){
+    if (event.target.matches("#to-search-button")) {
         displayButtons("search");
     }
-    
+
     //get to-random-button input
-    if(event.target.matches("#to-random-button")){
+    if (event.target.matches("#to-random-button")) {
         displayButtons("random");
     }
 
     //get randomize button input
-    if(event.target.matches("#randomize")){
+    if (event.target.matches("#randomize")) {
         var searchTerm = "";
         getData(searchTerm);
     }
 
     //get and store the searchTerm from the search bar
-    if(event.target.matches("#search-button")){
-        
+    if (event.target.matches("#search-button")) {
+
         event.preventDefault();
 
         var searchTerm = $("#search-bar").val().trim();
-        
+
         if (searchTerm != "") {
             //sends viable searchTerm to the getData function
             getData(searchTerm);
-  
+
         }
         else {
             return;
         }
     }
-    
+
 
 });
 

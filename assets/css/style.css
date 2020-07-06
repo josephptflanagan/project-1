@@ -2,6 +2,68 @@ body {
     padding: 10px;
 }
 
+
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+.card {
+  background-color: rgb(112, 131, 77);
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  flex-basis: auto;
+  overflow: hidden;
+}
+
+.card_content {
+  padding: 1rem;
+  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
+}
+
+.card_title {
+  color: #070505;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.card_text {
+  color: #070505;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;    
+  font-weight: 400;
+}
+.container
+{
+ display: flex;
+ flex-basis: auto;
+ background-color: rgb(112, 131, 77);
+ border-radius: 0.25rem;
+ box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+-----
 main{
     min-height: 800px;
 }
@@ -50,4 +112,5 @@ main{
 
 .pure-form fieldset{
     padding-top: 0px !important;
+
 }

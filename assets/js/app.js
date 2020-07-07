@@ -172,98 +172,100 @@ function displayData(dataArray) {
         
         //COCKTAIL DISPLAY START dataArray[2]
         displayCocktailEl.innerHTML = `
+        <h1 class=cocktail-title>Have a drink!</h1>
         <div>
-            <h2 id=“cocktailName”>${dataArray[2].drinks[0].strDrink}</h2>
-            <img src=${dataArray[2].drinks[0].strDrinkThumb} alt=${dataArray[2].strDrink} id=“cocktailImage”/>
+            <h2 id=cocktailName>${dataArray[2].drinks[0].strDrink}</h2>
+            <img src=${dataArray[2].drinks[0].strDrinkThumb} alt=${dataArray[2].strDrink} id=cocktail-img>
         </div>
         <div>
-            <p id=“cocktailInstructions”>${dataArray[2].drinks[0].strInstructions}</p>
+            <p id=cocktailInstructions>${dataArray[2].drinks[0].strInstructions}</p>
         </div>
         <h3>Ingredients</h3>
-        <span id=“measure1">${dataArray[2].drinks[0].strMeasure1}</span>
-        <span id=“ingredient1”>${dataArray[2].drinks[0].strIngredient1}</span>`;
-        if (dataArray[2].drinks[0].strIngredient2 !== null) {
+        <li><span class=measurement>${dataArray[2].drinks[0].strMeasure1}</span>
+        <span class=ingredient>${dataArray[2].drinks[0].strIngredient1}</span></li>
+        `;
+        if (dataArray[2].drinks[0].strIngredient2 && dataArray[2].drinks[0].strMeasure2 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement2">${dataArray[2].drinks[0].strMeasure2}</span>
-            <span id=“ingredient2”>${dataArray[2].drinks[0].strIngredient2}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure2}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient2}</span></li>
             `;
         }
-        if (dataArray[2].drinks[0].strIngredient3 !== null) {
+        if (dataArray[2].drinks[0].strIngredient3 && dataArray[2].drinks[0].strMeasure3 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement3">${dataArray[2].drinks[0].strMeasure3}</span>
-            <span id=“ingredient3”>${dataArray[2].drinks[0].strIngredient3}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure3}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient3}</span></li>
             `;
         }
-        if (dataArray[2].drinks[0].strIngredient4 !== null) {
+        if (dataArray[2].drinks[0].strIngredient4 && dataArray[2].drinks[0].strMeasure4 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement4">${dataArray[2].drinks[0].strMeasure4}</span>
-            <span id=“ingredient4”>${dataArray[2].drinks[0].strIngredient4}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure4}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient4}</span></li>
             `;
         }
-        if (dataArray[2].drinks[0].strIngredient5 !== null) {
+        if (dataArray[2].drinks[0].strIngredient5 && dataArray[2].drinks[0].strMeasure5 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement5">${dataArray[2].drinks[0].strMeasure5}</span>
-            <span id=“ingredient5”>${dataArray[2].drinks[0].strIngredient5}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure5}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient5}</span></li>
             `;
         }
-        if (dataArray[2].drinks[0].strIngredient6 !== null) {
+        if (dataArray[2].drinks[0].strIngredient6 && dataArray[2].drinks[0].strMeasure6 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement6">${dataArray[2].drinks[0].strMeasure6}</span>
-            <span id=“ingredient6”>${dataArray[2].drinks[0].strIngredient6}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure6}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient6}</span></li>
             `;
         }
-        if (dataArray[2].drinks[0].strIngredient7 !== null) {
+        if (dataArray[2].drinks[0].strIngredient7 && dataArray[2].drinks[0].strMeasure7 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement7">${dataArray[2].drinks[0].strMeasure7}</span>
-            <span id=“ingredient7”>${dataArray[2].drinks[0].strIngredient7}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure7}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient7}</span></li>
             `;
         }
-        if (dataArray[2].drinks[0].strIngredient8 !== null) {
+        if (dataArray[2].drinks[0].strIngredient8 && dataArray[2].drinks[0].strMeasure8 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement8">${dataArray[2].drinks[0].strMeasure8}</span>
-            <span id=“ingredient8”>${dataArray[2].drinks[0].strIngredient8}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure8}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient8}</span></li>
             `;
         }
         if (dataArray[2].drinks[0].strIngredient9 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement9">${dataArray[2].drinks[0].strMeasure9}</span>
-            <span id=“ingredient9”>${dataArray[2].drinks[0].strIngredient9}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure9}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient9}</span></li>
             `;
         }
         if (dataArray[2].drinks[0].strIngredient10 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement10">${dataArray[2].drinks[0].strMeasure10}</span>
-            <span id=“ingredient10”>${dataArray[2].drinks[0].strIngredient10}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure10}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient10}</span></li>
             `;
         }
         if (dataArray[2].drinks[0].strIngredient11 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement11">${dataArray[2].drinks[0].strMeasure11}</span>
-            <span id=“ingredient11”>${dataArray[2].drinks[0].strIngredient11}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure11}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient11}</span></li>
             `;
         }
         if (dataArray[2].drinks[0].strIngredient12 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement12">${dataArray[2].drinks[0].strMeasure12}</span>
-            <span id=“ingredient12”>${dataArray[2].drinks[0].strIngredient12}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure12}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient12}</span></li>
             `;
         }
         if (dataArray[2].drinks[0].strIngredient13 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement13">${dataArray[2].drinks[0].strMeasure13}</span>
-            <span id=“ingredient13”>${dataArray[2].drinks[0].strIngredient13}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure13}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient13}</span></li>
             `;
         }
         if (dataArray[2].drinks[0].strIngredient14 !== null) {
             displayCocktailEl.innerHTML += `
-            <span id=“measurement14">${dataArray[2].drinks[0].strMeasure14}</span>
-            <span id=“ingredient14”>${dataArray[2].drinks[0].strIngredient14}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure14}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient14}</span></li>
             `;
         }
         if (dataArray[2].drinks[0].strIngredient15 !== null) {
             displayCocktailEl.innerHTML += `
-                <span id=“measurement15">${dataArray[2].drinks[0].strMeasure15}</span>
-                <span id=“ingredient15”>${dataArray[2].drinks[0].strIngredient15}</span>
+            <li><span class=measurement>${dataArray[2].drinks[0].strMeasure15}</span>
+            <span class=ingredient>${dataArray[2].drinks[0].strIngredient15}</span></li>
             `;
         }
         //COCKTAIL DISPLAY END

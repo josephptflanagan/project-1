@@ -2,9 +2,6 @@ body {
     padding: 10px;
 }
 
-.bored {
-  justify-content: center
-}
 /* Font */
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
 
@@ -72,11 +69,6 @@ main {
     min-height: 800px;
 }
 
-.title-image{
-    margin: 5px 5px;
-    max-height: auto;
-    max-width: auto;
-}
 
 .button-div{
     padding-bottom: 10px;
@@ -118,11 +110,6 @@ main {
 
 }
 
-#cocktailImage {
-  max-width: 300px;
-  max-height: 300px;
-}
-
 #section-2 {
   justify-content: center;
 }
@@ -133,4 +120,9 @@ main {
 
 .ingredient {
   color: blue;
+}
+
+.cocktail-img {
+  max-width: 350px;
+  max-height: 350px;
 }

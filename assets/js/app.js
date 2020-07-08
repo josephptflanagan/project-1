@@ -66,17 +66,16 @@ function displayData(dataArray) {
 
     //update buttons
     displayButtons("content")
-    
+
     //RANDOM DATA START
-    if(dataArray.length == 3){       
+    if (dataArray.length == 3) {
 
         //CURRENT DISPLAY START dataArray[0]
 
         var numArticles = dataArray[0].news.length
         // console.log(numArticles);
 
-        for (i = 0; i < 3; i++) 
-        {
+        for (i = 0; i < 3; i++) {
             // function to choose random number from array
             var randomNumber = (Math.floor(Math.random() * numArticles))
 
@@ -98,74 +97,21 @@ function displayData(dataArray) {
 
             // create list element for unordered list
             var listEl = document.createElement("li");
-            listEl.classList= "cards_item";
+            listEl.classList = "cards_item";
             containerEl.appendChild(listEl);
 
             // create div element for every card
             var divEl = document.createElement("div");
-            divEl.classList= "card"
+            divEl.classList = "card"
 
 
-        var contentEl = document.createElement('div');
-        contentEl.classList ='card_content';
-        
-        if (articleImg === "None") 
-        {
-          
-        }
-        else 
-        {
-            // create link for image to article
-            var imgLinkEl = document.createElement("a");
-            imgLinkEl.classList = "card_image"
-            imgLinkEl.setAttribute("href", articleUrl);
-            imgLinkEl.setAttribute("target", "_blank");
+            var contentEl = document.createElement('div');
+            contentEl.classList = 'card_content';
 
-            // pull image url and create image element
-            var imgEl = document.createElement("img");
-            imgEl.setAttribute("src", articleImg);
+            if (articleImg === "None") {
 
-            // append link to image
-            imgLinkEl.appendChild(imgEl);
-            
-            // append to the div element with class = card
-            divEl.appendChild(imgLinkEl);
-        }
-
-        // create link element to link title
-        var titleEl = document.createElement("a");
-        titleEl.classList = "card_title";
-        titleEl.setAttribute("href", articleUrl);
-        titleEl.setAttribute("target", "_blank")
-        titleEl.textContent = articleTitle;
-        // divEl.appendChild(titleEl);
-
-        // create p element for article description
-        var descripEl = document.createElement("p");
-        descripEl.classList = "card_text";
-        descripEl.textContent = articleDescrip;
-
-        // append title and description to content element
-        contentEl.appendChild(titleEl);
-        contentEl.appendChild(descripEl);
-
-        // append content element to div el (each article card)
-        divEl.appendChild(contentEl);
-
-        // append div element to list element
-        listEl.appendChild(divEl);
-
-        // append to the dom
-        displayCurrentEl.appendChild(containerEl);
-    }
-
-
-            if (articleImg === "None") 
-            {
-            
             }
-            else 
-            {
+            else {
                 // create link for image to article
                 var imgLinkEl = document.createElement("a");
                 imgLinkEl.classList = "card_image"
@@ -178,55 +124,56 @@ function displayData(dataArray) {
 
                 // append link to image
                 imgLinkEl.appendChild(imgEl);
-                
-                // append to the div element with class card
+
+                // append to the div element with class = card
                 divEl.appendChild(imgLinkEl);
             }
+
+        // create link element to link title
+        var titleEl = document.createElement("a");
+        titleEl.classList = "card_title";
+        titleEl.setAttribute("href", articleUrl);
+        titleEl.setAttribute("target", "_blank")
+        titleEl.textContent = articleTitle;
+        divEl.appendChild(titleEl);
+
+        // create p element for article description
+        var descripEl = document.createElement("p");
+        descripEl.classList = "card_text";
+        descripEl.textContent = articleDescrip;
+
+        // append title and description to content element
+        var contentEl = document.createElement('div');
+        contentEl.classList = 'card_content';
+        contentEl.appendChild(titleEl);
+        contentEl.appendChild(descripEl);
+
+        // append content element to div el (each article card)
+        divEl.appendChild(contentEl);
+
+        // append div element to list element
+        listEl.appendChild(divEl);
+
+        // append to the dom
+        displayCurrentEl.appendChild(containerEl);
         
-            // create link element to link title
-            var titleEl = document.createElement("a");
-            titleEl.classList = "card_title";
-            titleEl.setAttribute("href", articleUrl);
-            titleEl.setAttribute("target", "_blank")
-            titleEl.textContent = articleTitle;
-            divEl.appendChild(titleEl);
+    }
 
-            // create p element for article description
-            var descripEl = document.createElement("p");
-            descripEl.classList = "card_text";
-            descripEl.textContent = articleDescrip;
 
-            // append title and description to content element
-            var contentEl = document.createElement('div');
-            contentEl.classList ='card_content';
-            contentEl.appendChild(titleEl);
-            contentEl.appendChild(descripEl);
+    //CURRENT DISPLAY END
 
-            // append content element to div el (each article card)
-            divEl.appendChild(contentEl);
-
-            // append div element to list element
-            listEl.appendChild(divEl);
-    
-            // append to the dom
-            displayCurrentEl.appendChild(containerEl);
-        }
-    
-
-        //CURRENT DISPLAY END
-
-        //CHUCK NORRIS DISPLAY START dataArray[1]
-        displayChuckEl.innerHTML = `
+    //CHUCK NORRIS DISPLAY START dataArray[1]
+    displayChuckEl.innerHTML = `
         <div class="pure-g">
             <div class="pure-u-1-2" id="chuck">
                 <p id="chuck-joke">${dataArray[1].value}</p>
             </div>
         </div>`;
-        
-        //CHUCK NORRIS DISPLAY END
-        
-        //COCKTAIL DISPLAY START dataArray[2]
-        displayCocktailEl.innerHTML = `
+
+    //CHUCK NORRIS DISPLAY END
+
+    //COCKTAIL DISPLAY START dataArray[2]
+    displayCocktailEl.innerHTML = `
         <h1 class=cocktail-title>Have a drink!</h1>
         <div>
             <h2 id=cocktailName>${dataArray[2].drinks[0].strDrink}</h2>
@@ -239,186 +186,187 @@ function displayData(dataArray) {
         <li><span class=measurement>${dataArray[2].drinks[0].strMeasure1}</span>
         <span class=ingredient>${dataArray[2].drinks[0].strIngredient1}</span></li>
         `;
-        if (dataArray[2].drinks[0].strIngredient2 && dataArray[2].drinks[0].strMeasure2 !== null) {
-            displayCocktailEl.innerHTML += `
+    if (dataArray[2].drinks[0].strIngredient2 && dataArray[2].drinks[0].strMeasure2 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure2}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient2}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient3 && dataArray[2].drinks[0].strMeasure3 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient3 && dataArray[2].drinks[0].strMeasure3 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure3}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient3}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient4 && dataArray[2].drinks[0].strMeasure4 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient4 && dataArray[2].drinks[0].strMeasure4 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure4}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient4}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient5 && dataArray[2].drinks[0].strMeasure5 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient5 && dataArray[2].drinks[0].strMeasure5 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure5}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient5}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient6 && dataArray[2].drinks[0].strMeasure6 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient6 && dataArray[2].drinks[0].strMeasure6 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure6}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient6}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient7 && dataArray[2].drinks[0].strMeasure7 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient7 && dataArray[2].drinks[0].strMeasure7 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure7}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient7}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient8 && dataArray[2].drinks[0].strMeasure8 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient8 && dataArray[2].drinks[0].strMeasure8 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure8}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient8}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient9 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient9 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure9}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient9}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient10 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient10 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure10}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient10}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient11 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient11 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure11}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient11}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient12 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient12 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure12}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient12}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient13 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient13 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure13}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient13}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient14 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient14 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure14}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient14}</span></li>
             `;
-        }
-        if (dataArray[2].drinks[0].strIngredient15 !== null) {
-            displayCocktailEl.innerHTML += `
+    }
+    if (dataArray[2].drinks[0].strIngredient15 !== null) {
+        displayCocktailEl.innerHTML += `
             <li><span class=measurement>${dataArray[2].drinks[0].strMeasure15}</span>
             <span class=ingredient>${dataArray[2].drinks[0].strIngredient15}</span></li>
             `;
-        }
-        //COCKTAIL DISPLAY END
-        
-        //RANDOM DATA END
     }
-       
-    if (dataArray.length == 2) {//SEARCH DATA START temporarily set to 1 to test wiki
+    //COCKTAIL DISPLAY END
 
-        //WIKIPEDIA DISPLAY START dataArray[0] 
-        if (dataArray[0].type === "disambiguation") {
-            var disabmExtract = dataArray[0].extract;
-            console.log(disabmExtract);
-            
-            var disambTitle = dataArray[0].title;
-            
-            var wikiTableDiv = document.createElement("div");
-            wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal");
-            var disambTitleEl = document.createElement("h3");
-            var disabmExtractEl = document.createElement("p");
+    //RANDOM DATA END
 
-            disambTitleEl.textContent = disambTitle;
-            disabmExtractEl.textContent = disabmExtract;
-            
-            wikiTableDiv.appendChild(disambTitleEl);
-            wikiTableDiv.appendChild(disabmExtractEl);
-
-            wikiContainerEl.appendChild(wikiTableDiv);
-
-        }
-
-        else {
-            var wikiTitle = dataArray[0].title;
-            var wikiExtract = dataArray[0].extract;
-
-            var wikiLink = dataArray[0].content_urls.desktop.page;
-
-            var wikiImg = dataArray[0].thumbnail.source;
-
-            var wikiTableDiv = document.createElement("div");
-            wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal");
-            var wikiTitleEl = document.createElement("h3");
-            var wikiExtractEl = document.createElement("p");
-            var wikiImgEl = document.createElement("img");
-
-            wikiTitleEl.textContent = wikiTitle;
-            wikiExtractEl.textContent = wikiExtract;
-            wikiImgEl.setAttribute("src", wikiImg);
-
-            wikiTableDiv.appendChild(wikiTitleEl);
-            wikiTableDiv.appendChild(wikiExtractEl);
-            wikiTableDiv.appendChild(wikiImgEl);
-
-            wikiContainerEl.appendChild(wikiTableDiv);
-        }
-        //WIKIPEDIA DISPLAY END
-
-        //GIPHY DISPLAY START
-        var gifImg = $("<img>")
-            .attr("src", dataArray[1].data[0].images.fixed_height.url);
-
-        // Append 'gifImg' to the <div>
-        var gifContainer = $("<div>")
-            .append(gifImg);
-
-        $("#section-1").append(gifContainer);
-
-        //GIPHY DISPLAY END
-
-        /*
-        //VIMEO DISPLAY START dataArray[0] for now, dataArray[1] once all are present
-        var vimeoVideoURL = "https://player.vimeo.com/" + dataArray[0].uri;
-
-        var vimeoPlayer = $("<iframe>")
-            .attr("src", vimeoVideoURL)
-            .attr("width", dataArray[0].width)
-            .attr("height", dataArray[0].height)
-            .attr("frameborder", "0")
-            .attr("title", dataArray[0].title)
-            .attr("webkitallowfullscreen")
-            .attr("mozallowfullscreen")
-            .attr("allowfullscreen");
-
-        var vimeoDiv = $("<div>")
-            .addClass("vimeo-card")
-            .attr("id", "vimeo")
-            .append(vimeoPlayer);
-
-        var vimeoSection = $("<div>")
-            .addClass("pure-g")
-            .append(vimeoDiv);
-
-        $("#section-1").append(vimeoSection);
-        //VIMEO DISPLAY END
-
-        //SEARCH DATA END
-        */
     }
+
+if (dataArray.length == 2) {//SEARCH DATA START temporarily set to 1 to test wiki
+
+    //WIKIPEDIA DISPLAY START dataArray[0] 
+    if (dataArray[0].type === "disambiguation") {
+        var disabmExtract = dataArray[0].extract;
+        console.log(disabmExtract);
+
+        var disambTitle = dataArray[0].title;
+
+        var wikiTableDiv = document.createElement("div");
+        wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal");
+        var disambTitleEl = document.createElement("h3");
+        var disabmExtractEl = document.createElement("p");
+
+        disambTitleEl.textContent = disambTitle;
+        disabmExtractEl.textContent = disabmExtract;
+
+        wikiTableDiv.appendChild(disambTitleEl);
+        wikiTableDiv.appendChild(disabmExtractEl);
+
+        wikiContainerEl.appendChild(wikiTableDiv);
+
+    }
+
+    else {
+        var wikiTitle = dataArray[0].title;
+        var wikiExtract = dataArray[0].extract;
+
+        var wikiLink = dataArray[0].content_urls.desktop.page;
+
+        var wikiImg = dataArray[0].thumbnail.source;
+
+        var wikiTableDiv = document.createElement("div");
+        wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal");
+        var wikiTitleEl = document.createElement("h3");
+        var wikiExtractEl = document.createElement("p");
+        var wikiImgEl = document.createElement("img");
+
+        wikiTitleEl.textContent = wikiTitle;
+        wikiExtractEl.textContent = wikiExtract;
+        wikiImgEl.setAttribute("src", wikiImg);
+
+        wikiTableDiv.appendChild(wikiTitleEl);
+        wikiTableDiv.appendChild(wikiExtractEl);
+        wikiTableDiv.appendChild(wikiImgEl);
+
+        wikiContainerEl.appendChild(wikiTableDiv);
+    }
+    //WIKIPEDIA DISPLAY END
+
+    //GIPHY DISPLAY START
+    var gifImg = $("<img>")
+        .attr("src", dataArray[1].data[0].images.fixed_height.url);
+
+    // Append 'gifImg' to the <div>
+    var gifContainer = $("<div>")
+        .append(gifImg);
+
+    $("#section-1").append(gifContainer);
+
+    //GIPHY DISPLAY END
+
+    /*
+    //VIMEO DISPLAY START dataArray[0] for now, dataArray[1] once all are present
+    var vimeoVideoURL = "https://player.vimeo.com/" + dataArray[0].uri;
+
+    var vimeoPlayer = $("<iframe>")
+        .attr("src", vimeoVideoURL)
+        .attr("width", dataArray[0].width)
+        .attr("height", dataArray[0].height)
+        .attr("frameborder", "0")
+        .attr("title", dataArray[0].title)
+        .attr("webkitallowfullscreen")
+        .attr("mozallowfullscreen")
+        .attr("allowfullscreen");
+
+    var vimeoDiv = $("<div>")
+        .addClass("vimeo-card")
+        .attr("id", "vimeo")
+        .append(vimeoPlayer);
+
+    var vimeoSection = $("<div>")
+        .addClass("pure-g")
+        .append(vimeoDiv);
+
+    $("#section-1").append(vimeoSection);
+    //VIMEO DISPLAY END
+
+    //SEARCH DATA END
+    */
+}
 
 };
 
@@ -432,7 +380,7 @@ function saveData(searchTerm) {
 function loadData() {
     var search = localStorage.getItem("search-term");
 
-  //  localStorage.clear();
+    //  localStorage.clear();
 
     if (!search) {
         return "Search";
@@ -520,7 +468,7 @@ $("#button-div").on("click", function () {
     //get continue-button input
     if (event.target.matches("#continue-button")) {
 
-            displayButtons("content");
+        displayButtons("content");
 
     }
 

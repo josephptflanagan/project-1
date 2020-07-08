@@ -1,4 +1,3 @@
-var drinkButton = document.getElementById("drink-button");
 var displayCurrentEl = document.querySelector("#section-0");
 var displayChuckEl = document.querySelector("#section-1");
 var displayCocktailEl = document.querySelector("#section-2");
@@ -7,7 +6,7 @@ var wikiContainerEl = document.querySelector("#section-0");
 
 var getData = async (searchTerm) => {
 
-    console.log("searchTerm: " + searchTerm);
+    // console.log("searchTerm: " + searchTerm);
 
     if (searchTerm == null) { searchTerm = ""; } //for testing purposes only, REMOVE
     var urlArray = [];
@@ -106,6 +105,61 @@ function displayData(dataArray) {
             var divEl = document.createElement("div");
             divEl.classList= "card"
 
+
+        var contentEl = document.createElement('div');
+        contentEl.classList ='card_content';
+        
+        if (articleImg === "None") 
+        {
+          
+        }
+        else 
+        {
+            // create link for image to article
+            var imgLinkEl = document.createElement("a");
+            imgLinkEl.classList = "card_image"
+            imgLinkEl.setAttribute("href", articleUrl);
+            imgLinkEl.setAttribute("target", "_blank");
+
+            // pull image url and create image element
+            var imgEl = document.createElement("img");
+            imgEl.setAttribute("src", articleImg);
+
+            // append link to image
+            imgLinkEl.appendChild(imgEl);
+            
+            // append to the div element with class = card
+            divEl.appendChild(imgLinkEl);
+        }
+
+        // create link element to link title
+        var titleEl = document.createElement("a");
+        titleEl.classList = "card_title";
+        titleEl.setAttribute("href", articleUrl);
+        titleEl.setAttribute("target", "_blank")
+        titleEl.textContent = articleTitle;
+        // divEl.appendChild(titleEl);
+
+        // create p element for article description
+        var descripEl = document.createElement("p");
+        descripEl.classList = "card_text";
+        descripEl.textContent = articleDescrip;
+
+        // append title and description to content element
+        contentEl.appendChild(titleEl);
+        contentEl.appendChild(descripEl);
+
+        // append content element to div el (each article card)
+        divEl.appendChild(contentEl);
+
+        // append div element to list element
+        listEl.appendChild(divEl);
+
+        // append to the dom
+        displayCurrentEl.appendChild(containerEl);
+    }
+
+
             if (articleImg === "None") 
             {
             
@@ -158,6 +212,7 @@ function displayData(dataArray) {
             displayCurrentEl.appendChild(containerEl);
         }
     
+
         //CURRENT DISPLAY END
 
         //CHUCK NORRIS DISPLAY START dataArray[1]
@@ -494,8 +549,6 @@ $("#button-div").on("click", function () {
 
 
 });
-
-//drinkButton.addEventListener("click", getRandomCocktail);
 
 startUp();
 

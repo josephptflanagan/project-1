@@ -165,7 +165,8 @@ function displayData(dataArray) {
     //CHUCK NORRIS DISPLAY START dataArray[1]
     displayChuckEl.innerHTML = `
         <div class="pure-g">
-            <div class="pure-u-1-2" id="chuck">
+            <div class="pure-u-1" id="chuck">
+                <h2 id="chuck-title">&#128516; Laugh! &#128516;</h2>
                 <p id="chuck-joke">${dataArray[1].value}</p>
             </div>
         </div>`;
@@ -174,9 +175,9 @@ function displayData(dataArray) {
 
     //COCKTAIL DISPLAY START dataArray[2]
     displayCocktailEl.innerHTML = `
-        <h1 class=cocktail-title>Have a drink!</h1>
+        <h2 class=cocktail-title>&#129347; Have a drink! &#129347;</h1>
         <div>
-            <h2 id=cocktailName>${dataArray[2].drinks[0].strDrink}</h2>
+            <h3 id=cocktailName>${dataArray[2].drinks[0].strDrink}</h2>
             <img src=${dataArray[2].drinks[0].strDrinkThumb} alt=${dataArray[2].strDrink} id=cocktail-img>
         </div>
         <div>
@@ -429,7 +430,7 @@ function displayButtons(source) {
             .append(randomButton);
 
         var searchBar = $("<input>")
-            .addClass("search")
+            .addClass("search pure-form sub")
             .attr("type", "text")
             .attr("placeholder", loadData())
             .attr("aria-label", "Search")

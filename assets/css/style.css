@@ -176,3 +176,8 @@ footer {
   font-size: 1.5vw;
 } 
 
+@media screen and (max-width: 575px) {
+  .card {
+    width: 100%;
+  }
+}

@@ -93,7 +93,7 @@ function displayData(dataArray) {
 
             // create unordered list element
             var containerEl = document.createElement("ul");
-            containerEl.classList = "cards"
+            containerEl.classList = "cards pure-u-md-1-3 pure-u-1"
 
             // create list element for unordered list
             var listEl = document.createElement("li");
@@ -287,7 +287,7 @@ if (dataArray.length == 2) {//SEARCH DATA START temporarily set to 1 to test wik
         var disambTitle = dataArray[0].title;
 
         var wikiTableDiv = document.createElement("div");
-        wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal");
+        wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal wikipedia");
         var disambTitleEl = document.createElement("h3");
         var disabmExtractEl = document.createElement("p");
 
@@ -344,34 +344,6 @@ if (dataArray.length == 2) {//SEARCH DATA START temporarily set to 1 to test wik
 
     //GIPHY DISPLAY END
 
-    /*
-    //VIMEO DISPLAY START dataArray[0] for now, dataArray[1] once all are present
-    var vimeoVideoURL = "https://player.vimeo.com/" + dataArray[0].uri;
-
-    var vimeoPlayer = $("<iframe>")
-        .attr("src", vimeoVideoURL)
-        .attr("width", dataArray[0].width)
-        .attr("height", dataArray[0].height)
-        .attr("frameborder", "0")
-        .attr("title", dataArray[0].title)
-        .attr("webkitallowfullscreen")
-        .attr("mozallowfullscreen")
-        .attr("allowfullscreen");
-
-    var vimeoDiv = $("<div>")
-        .addClass("vimeo-card")
-        .attr("id", "vimeo")
-        .append(vimeoPlayer);
-
-    var vimeoSection = $("<div>")
-        .addClass("pure-g")
-        .append(vimeoDiv);
-
-    $("#section-1").append(vimeoSection);
-    //VIMEO DISPLAY END
-
-    //SEARCH DATA END
-    */
 }
 
 };
@@ -435,7 +407,7 @@ function displayButtons(source) {
             .append(randomButton);
 
         var searchBar = $("<input>")
-            .addClass("search")
+            .addClass("search-btn pure-button searchcolor")
             .attr("type", "text")
             .attr("placeholder", loadData())
             .attr("aria-label", "Search")
@@ -452,7 +424,7 @@ function displayButtons(source) {
             .append(searchBar, searchButton);
 
         var searchBarForm = $("<div>")
-            .addClass("pure-u-md-1-2 pure-u-1")
+            .addClass("pure-u-md-1-3 pure-u-1")
             .append(searchField);
 
         // var enclosingDiv = $("<div>")

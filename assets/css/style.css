@@ -12,8 +12,6 @@ img {
 }
 
 .cards {
-  display: flex;
-  flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -25,13 +23,8 @@ img {
 }
 
 .card {
-  background-color: rgb(112, 131, 77);
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  flex-basis: auto;
-  overflow: hidden;
 }
 
 .card_content {
@@ -55,13 +48,6 @@ img {
   margin-bottom: 1.25rem;    
   font-weight: 400;
 }
-.container
-{
- display: flex;
- flex-basis: auto;
- border-radius: 0.25rem;
- box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-}
  
 main {
     min-height: 800px;
@@ -83,7 +69,7 @@ main {
     margin: auto;
     margin-bottom: 10px;
     padding: 20px;
-    font-size: 2vw;
+    font-size: 0.875rem;
     border-radius: 5px;
     width: 50%;
 }
@@ -93,12 +79,12 @@ main {
     margin-left: 0;
     margin-bottom: 10px;
     padding: 20px;
-    font-size: 2vw;
+    font-size: 0.875rem;
     border-radius: 5px;
     width: 50%;
 }
 
-.search{
+.search {
     padding: 19px !important;
     font-size: 20px;
     border-radius: 5px 0px 0px 5px;
@@ -123,7 +109,7 @@ main {
   flex: auto;
   background-clip: content-box;
   overflow: hidden;
-  font-size: 1.5vw;
+  font-size: 0.875rem
 }
 
 
@@ -149,7 +135,7 @@ footer {
   background: linear-gradient(to bottom, #200122, #6f0000);
   color: white;
   margin-bottom: 10px;
-  font-size: 1.5vw;
+  font-size: 0.875rem;
 }
 
 .wiki-title {
@@ -173,6 +159,10 @@ footer {
   background: linear-gradient(to right, #00b4db, #0083b0);
   color: white;
   padding: 20px;
-  font-size: 1.5vw;
+  font-size: 0.875rem;
 } 
 
+.searchcolor {
+  background-color: white;
+  border: black solid 1px;
+}

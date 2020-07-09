@@ -1,3 +1,178 @@
 body {
     padding: 10px;
 }
+
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+.card {
+  background-color: rgb(112, 131, 77);
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  flex-basis: auto;
+  overflow: hidden;
+}
+
+.card_content {
+  padding: 1rem;
+  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
+}
+
+.card_title {
+  color: #070505;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.card_text {
+  color: #070505;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;    
+  font-weight: 400;
+}
+.container
+{
+ display: flex;
+ flex-basis: auto;
+ border-radius: 0.25rem;
+ box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+}
+ 
+main {
+    min-height: 800px;
+} 
+
+.title-image{
+    display: inline-block;
+    margin: 5px 5px;
+    max-height: 240px;
+    max-width: 520px;
+}
+
+.button-div{
+    padding-bottom: 10px;
+}
+
+.btn{
+    display:block;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 20px;
+    font-size: 2vw;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.search-btn {
+    display:block;
+    margin-left: 0;
+    margin-bottom: 10px;
+    padding: 20px;
+    font-size: 2vw;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.search{
+    padding: 19px !important;
+    font-size: 20px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.sub{
+    width:50%;
+}
+
+.high{
+    width: 100%;
+}
+
+.pure-form fieldset{
+    padding-top: 0px !important;
+
+}
+
+.cocktail-data {
+  background: linear-gradient(to bottom, #004ff9, #fff94c);
+  text-align: center;
+  flex: auto;
+  background-clip: content-box;
+  overflow: hidden;
+  font-size: 1.5vw;
+}
+
+
+#cocktail-img {
+  max-width: 25%;
+  max-height: 25%;
+}
+
+footer {
+  text-align: center;
+}
+
+.bored {
+  text-align: center;
+}
+
+.title {
+  font-size: 3vw;
+}
+
+#chuck {
+  text-align: center;
+  background: linear-gradient(to bottom, #200122, #6f0000);
+  color: white;
+  margin-bottom: 10px;
+  font-size: 1.5vw;
+}
+
+.wiki-title {
+  text-decoration: underline;
+  font-size: xx-large;
+  color: black;
+}
+
+.giphy {
+  display: flex;
+}
+
+.giphy-img {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.wikipedia {
+  background: linear-gradient(to right, #00b4db, #0083b0);
+  color: white;
+  padding: 20px;
+  font-size: 1.5vw;
+} 
+

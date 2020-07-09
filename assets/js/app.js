@@ -165,7 +165,8 @@ function displayData(dataArray) {
     //CHUCK NORRIS DISPLAY START dataArray[1]
     displayChuckEl.innerHTML = `
         <div class="pure-g">
-            <div class="pure-u-1-2" id="chuck">
+            <div class="pure-u-1" id="chuck">
+                <h2 id="chuck-title">&#128516; Laugh! &#128516;</h2>
                 <p id="chuck-joke">${dataArray[1].value}</p>
             </div>
         </div>`;
@@ -174,9 +175,9 @@ function displayData(dataArray) {
 
     //COCKTAIL DISPLAY START dataArray[2]
     displayCocktailEl.innerHTML = `
-        <h1 class=cocktail-title>Have a drink!</h1>
+        <h2 class=cocktail-title>&#129347; Have a drink! &#129347;</h1>
         <div>
-            <h2 id=cocktailName>${dataArray[2].drinks[0].strDrink}</h2>
+            <h3 id=cocktailName>${dataArray[2].drinks[0].strDrink}</h2>
             <img src=${dataArray[2].drinks[0].strDrinkThumb} alt=${dataArray[2].strDrink} id=cocktail-img>
         </div>
         <div>
@@ -309,12 +310,14 @@ if (dataArray.length == 2) {//SEARCH DATA START temporarily set to 1 to test wik
         var wikiImg = dataArray[0].thumbnail.source;
 
         var wikiTableDiv = document.createElement("div");
-        wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal");
-        var wikiTitleEl = document.createElement("h3");
+        wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal wikipedia");
+        var wikiTitleEl = document.createElement("a");
         var wikiExtractEl = document.createElement("p");
         var wikiImgEl = document.createElement("img");
 
-        wikiTitleEl.textContent = wikiTitle;
+        wikiTitleEl.setAttribute("href", wikiLink);
+        wikiTitleEl.setAttribute("class", "wiki-title")
+        wikiTitleEl.textContent = "Wikipedia - " + wikiTitle;
         wikiExtractEl.textContent = wikiExtract;
         wikiImgEl.setAttribute("src", wikiImg);
 
@@ -328,11 +331,14 @@ if (dataArray.length == 2) {//SEARCH DATA START temporarily set to 1 to test wik
 
     //GIPHY DISPLAY START
     var gifImg = $("<img>")
-        .attr("src", dataArray[1].data[0].images.fixed_height.url);
+        .attr("src", dataArray[1].data[0].images.fixed_height.url)
+        .addClass("giphy-img");
 
     // Append 'gifImg' to the <div>
     var gifContainer = $("<div>")
+        .addClass("giphy")
         .append(gifImg);
+        
 
     $("#section-1").append(gifContainer);
 
@@ -403,7 +409,7 @@ function displayButtons(source) {
             .text("OH, Yeah!");
 
         var continueButtonDiv = $("<div>")
-            .addClass("pure-u-1-2")
+            .addClass("pure-u-md-1-2 pure-u-1")
             .append(continueButton);
 
         var trollButton = $("<a>")
@@ -412,7 +418,7 @@ function displayButtons(source) {
             .text("Not Really");
 
         var trollButtonDiv = $("<div>")
-            .addClass("pure-u-1-2")
+            .addClass("pure-u-md-1-2 pure-u-1")
             .append(trollButton);
 
         $("#button-div").append(continueButtonDiv, trollButtonDiv);
@@ -425,7 +431,7 @@ function displayButtons(source) {
             .text("Random Content");
 
         var randomButtonDiv = $("<div>")
-            .addClass("pure-u-1-2")
+            .addClass("pure-u-md-1-2 pure-u-1")
             .append(randomButton);
 
         var searchBar = $("<input>")
@@ -436,23 +442,24 @@ function displayButtons(source) {
             .attr("id", "search-bar");
 
         var searchButton = $("<button>")
-            .addClass("pure-button search-btn")
+            .addClass("search-btn pure-button")
             .attr("type", "submit")
             .attr("id", "search-button")
             .text("Search");
 
-        var searchField = $("<fieldset>")
+        var searchField = $("<div>")
+            .addClass("pure-g")
             .append(searchBar, searchButton);
 
-        var searchBarForm = $("<form>")
-            .addClass("pure-form sub")
+        var searchBarForm = $("<div>")
+            .addClass("pure-u-md-1-2 pure-u-1")
             .append(searchField);
 
-        var enclosingDiv = $("<div>")
-            .addClass("high pure-g")
-            .append(randomButtonDiv, searchBarForm)
+        // var enclosingDiv = $("<div>")
+        //     .addClass("pure-g pure-u-md-1-2 pure-u-1")
+            
 
-        $("#button-div").append(enclosingDiv);
+        $("#button-div").append(randomButtonDiv, searchBarForm);
     }
 };
 

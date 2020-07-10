@@ -17,7 +17,7 @@ The HTML body consists of a header, main, and footer. The header and footer are 
 
 The script is composed of several functions:
 
-startup, getData, displayData, displayButtons, saveData, and loadData. Along with this there are DOM references at the top and button event managers at the bottom
+startup, getData, displayData, displayButtons, saveData, and loadData. Along with this there are DOM references at the top and button event managers at the bottom.
 
 Startup is the most simple of these functions, acting redundantly as a way to display the starter buttons rather than just calling displayButtons directly. 
 

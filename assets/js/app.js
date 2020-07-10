@@ -285,13 +285,16 @@ if (dataArray.length == 2) {//SEARCH DATA START temporarily set to 1 to test wik
         console.log(disabmExtract);
 
         var disambTitle = dataArray[0].title;
+        var wikiLink = dataArray[0].content_urls.desktop.page;
 
         var wikiTableDiv = document.createElement("div");
         wikiTableDiv.setAttribute("class", "pure-table pure-table-horizontal wikipedia");
-        var disambTitleEl = document.createElement("h3");
+        var disambTitleEl = document.createElement("a");
         var disabmExtractEl = document.createElement("p");
 
-        disambTitleEl.textContent = disambTitle;
+        disambTitleEl.setAttribute("href", wikiLink);
+        disambTitleEl.setAttribute("class", "wiki-title")
+        disambTitleEl.textContent = "Wikipedia - " + disambTitle;
         disabmExtractEl.textContent = disabmExtract;
 
         wikiTableDiv.appendChild(disambTitleEl);
@@ -464,6 +467,23 @@ $("#button-div").on("click", function () {
 
         var searchTerm = $("#search-bar").val().trim();
 
+        
+
+
+        if (searchTerm != "") {
+            //sends viable searchTerm to the getData function
+            getData(searchTerm);
+
+        }
+        else {
+            return;
+        }
+    }
+    
+    if (event.keycode===13){
+
+        event.preventDefault();
+        var searchTerm = $("#search-bar").val().trim();
         if (searchTerm != "") {
             //sends viable searchTerm to the getData function
             getData(searchTerm);

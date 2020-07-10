@@ -422,7 +422,7 @@ function displayButtons(source) {
             .attr("id", "search-button")
             .text("Search");
 
-        var searchField = $("<div>")
+        var searchField = $("<form>")
             .addClass("pure-g")
             .append(searchBar, searchButton);
 

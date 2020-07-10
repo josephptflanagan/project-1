@@ -8,7 +8,7 @@ https://github.com/josephptflanagan/project-1
 ## Site URL
 https://josephptflanagan.github.io/project-1
 
-## GIF URL
+## GIF
 ![demo of site](https://github.com/josephptflanagan/project-1/blob/master/assets/images/Bored_.gif)
 
 ### How Bored at Home Works

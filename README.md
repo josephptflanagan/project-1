@@ -3,13 +3,13 @@
 ## The Lucky Charms (Team 2) - Joseph Flanagan(lead), Tom Breazier, Claudia Lay, Alvaro Saldana, Darius Wright
 
 ## GitHub URL
-https://josephptflanagan.github.io/project-1
-
-## Site URL
 https://github.com/josephptflanagan/project-1
 
-## GIF URL
+## Site URL
+https://josephptflanagan.github.io/project-1
 
+## GIF
+![demo of site](https://github.com/josephptflanagan/project-1/blob/master/assets/images/Bored_.gif)
 
 ### How Bored at Home Works
 

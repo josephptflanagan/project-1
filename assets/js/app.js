@@ -435,7 +435,7 @@ function displayButtons(source) {
             .append(randomButton);
 
         var searchBar = $("<input>")
-            .addClass("search")
+            .addClass("search-btn search-input")
             .attr("type", "text")
             .attr("placeholder", loadData())
             .attr("aria-label", "Search")

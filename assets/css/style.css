@@ -176,3 +176,18 @@ footer {
   font-size: 1.5vw;
 } 
 
+.search-input {
+  font-family: inherit;
+  color: rgba(0,0,0,.8);
+  border: none transparent;
+  background-color: #e6e6e6;
+  text-decoration: none;
+  line-height: normal;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-drag: none;
+  user-select: none;
+  box-sizing: border-box;
+}

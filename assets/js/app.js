@@ -492,6 +492,23 @@ $("#button-div").on("click", function () {
 
         var searchTerm = $("#search-bar").val().trim();
 
+        
+
+
+        if (searchTerm != "") {
+            //sends viable searchTerm to the getData function
+            getData(searchTerm);
+
+        }
+        else {
+            return;
+        }
+    }
+    
+    if (event.keycode===13){
+
+        event.preventDefault();
+        var searchTerm = $("#search-bar").val().trim();
         if (searchTerm != "") {
             //sends viable searchTerm to the getData function
             getData(searchTerm);

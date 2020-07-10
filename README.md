@@ -17,7 +17,8 @@ The HTML body consists of a header, main, and footer. The header and footer are 
 
 The script is composed of several functions:
 
-startup, getData, displayData, displayButtons, saveData, and loadData. Along with this there are DOM references at the top and button event managers at the bottom
+startup, getData, displayData, displayButtons, saveData, and loadData. Along with this there are DOM references at the top and button event managers at the bottom.
+
 Startup is the most simple of these functions, acting redundantly as a way to display the starter buttons rather than just calling displayButtons directly. 
 
 DisplayButtons creates the buttons in the aforementioned button-div. It has two different states depending on the source of the displayButtons function call. When called from the startUp function, the buttons created allow for the user to either interact with more content or not. Once the user has chosen to interact with more content, the displayButtons function is called from the button event manager to generate new buttons allowing the user to choose between randomized and search generated content. 
